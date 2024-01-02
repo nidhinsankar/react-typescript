@@ -13,7 +13,7 @@ const InputTodo: React.FC<HomeProps> = ({ setTodoList, todoList }) => {
 
   return (
     <div>
-      <div className="m-16">
+      <div className="flex flex-col w-full">
         <input
           className="border"
           type="text"

@@ -8,7 +8,7 @@ interface todoListProps {
 
 const TodoList: React.FC<todoListProps> = ({ todoList }) => {
   return (
-    <div>
+    <div className="bg-light-neutral-very-light-gray h-[350px] shadow-md rounded-md">
       {todoList.map((todo) => (
         <Todo {...todo} />
       ))}
