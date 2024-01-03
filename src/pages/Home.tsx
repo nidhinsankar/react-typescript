@@ -12,11 +12,16 @@ export interface HomeProps {
 const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {
   console.log(todoList);
 
+  const deleteTodo = (name: string) => {
+    const filterTodo = todoList?.filter((todo) => todo.todoName !== name);
+    setTodoList(filterTodo);
+  };
+
   return (
     <div className="w-[400px] mx-auto">
       <Header />
       <InputTodo setTodoList={setTodoList} todoList={todoList} />
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} deleteTodo={deleteTodo} />
     </div>
   );
 };

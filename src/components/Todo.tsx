@@ -3,7 +3,11 @@ import { todo } from "../App";
 import checkIcon from "../assets/images/icon-check.svg";
 import crossIcon from "../assets/images/icon-cross.svg";
 
-const Todo: React.FC<todo> = ({ todoName, status }) => {
+interface todoProps extends todo {
+  deleteTodo: (name: string) => void;
+}
+
+const Todo: React.FC<todoProps> = ({ todoName, status, deleteTodo }) => {
   return (
     <div className="flex items-center justify-between  border-b h-11 px-4">
       <div className="flex items-center">
@@ -19,7 +23,12 @@ const Todo: React.FC<todo> = ({ todoName, status }) => {
         <h2 className="ml-4">{todoName}</h2>
       </div>
       <div>
-        <img src={crossIcon} alt="cross-icon" className="h-4" />
+        <img
+          onClick={() => deleteTodo(todoName)}
+          src={crossIcon}
+          alt="cross-icon"
+          className="h-4"
+        />
       </div>
     </div>
   );

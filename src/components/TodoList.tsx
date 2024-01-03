@@ -4,13 +4,14 @@ import { todo } from "../App";
 
 interface todoListProps {
   todoList: todo[];
+  deleteTodo: (name: string) => void;
 }
 
-const TodoList: React.FC<todoListProps> = ({ todoList }) => {
+const TodoList: React.FC<todoListProps> = ({ todoList, deleteTodo }) => {
   return (
     <div className="bg-light-neutral-very-light-gray h-[350px] shadow-md rounded-md">
       {todoList.map((todo) => (
-        <Todo {...todo} />
+        <Todo {...todo} deleteTodo={deleteTodo} />
       ))}
     </div>
   );
