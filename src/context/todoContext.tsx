@@ -1,8 +1,11 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext, useReducer } from "react";
 import { todoType } from "../constants";
-
+import { todoReducer } from "./todoReducer";
 
 type initialStateType = todoType[];
+type todoProviderProps = {
+  children: React.ReactNode;
+};
 
 const initialState: initialStateType = [
   {
@@ -23,7 +26,16 @@ const initialState: initialStateType = [
 ];
 const todoContext = createContext<initialStateType>(initialState);
 
-export const TodoProvider: React.FC = ({ children }) => {
-  const [state,dispatch] = 
-  return <todoContext.Provider></todoContext.Provider>;
+export const TodoProvider: React.FC<todoProviderProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+
+  return (
+    <todoContext.Provider value={{ todos: state, dispatch }}>
+      {children}
+    </todoContext.Provider>
+  );
+};
+
+export const useTodoContext = () => {
+  return useContext(todoContext);
 };
