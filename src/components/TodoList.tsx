@@ -9,12 +9,13 @@ interface todoListProps {
 }
 
 const TodoList: React.FC<todoListProps> = ({ todoList, deleteTodo }) => {
-  const { todos } = useTodoContext();
+  const { state } = useTodoContext();
 
-  console.log(todos);
+  console.log(state);
+
   return (
     <div className="bg-light-neutral-very-light-gray h-[350px] shadow-md rounded-md">
-      {todos.map((todo) => (
+      {state?.map((todo) => (
         <Todo {...todo} deleteTodo={deleteTodo} key={todo?.id} />
       ))}
     </div>

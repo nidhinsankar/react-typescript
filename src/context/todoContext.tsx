@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { todoType } from "../constants";
+import { ADD_TODO, DELETE_TODO, TOGGLE_STATUS, todoType } from "../constants";
 import { todoReducer } from "./todoReducer";
+import { Add_Todo, Delete_Todo, Toggle_Status } from "./action-type";
 
-type initialStateType = todoType[];
+export type initialStateType = todoType[];
+
 type todoProviderProps = {
   children: React.ReactNode;
 };
@@ -24,13 +26,33 @@ const initialState: initialStateType = [
     status: false,
   },
 ];
+
 const todoContext = createContext<initialStateType>(initialState);
 
 export const TodoProvider: React.FC<todoProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
+  const AddTodoDispatch = (data: todoType) => {
+    dispatch(Add_Todo({ action_type: ADD_TODO, action_payload: data }));
+  };
+
+  const DeleteTodoDispatch = (id: number) => {
+    dispatch(Delete_Todo({ action_type: DELETE_TODO, action_payload: id }));
+  };
+
+  const ToggleStatusDispatch = (id: number) => {
+    dispatch(Toggle_Status({ action_type: TOGGLE_STATUS, action_payload: id }));
+  };
+
   return (
-    <todoContext.Provider value={{ todos: state, dispatch }}>
+    <todoContext.Provider
+      value={{
+        state,
+        ADDTODO: AddTodoDispatch,
+        DELETETODO: DeleteTodoDispatch,
+        TOGGLESTATUS: ToggleStatusDispatch,
+      }}
+    >
       {children}
     </todoContext.Provider>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Home from "./pages/Home";
 import desktopBG from "./assets/images/bg-desktop-light.jpg";
-import Header from "./components/Header";
 export interface todo {
+  id: number;
   todoName: string;
   status: boolean;
 }

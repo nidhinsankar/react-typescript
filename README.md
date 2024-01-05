@@ -7,6 +7,8 @@
 - using useState with typescript
 - learned about declaring function and passing it as a prop using typescript
 - started learning about using useContext and useReducer in react typescript
+- implemented context and reducer in todo app with typescript
+- implemented dispatch , action types, provider parent components in typescript
 
 ```
   // TODO APP PLANNING

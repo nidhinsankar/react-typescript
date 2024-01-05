@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { todo } from "../App";
 import { HomeProps } from "../pages/Home";
+import { useTodoContext } from "../context/todoContext";
 
 const InputTodo: React.FC<HomeProps> = ({ setTodoList, todoList }) => {
   const [todoName, setTodoName] = useState("");
 
+  const { ADDTODO } = useTodoContext();
+
   const onSubmit = () => {
-    const todoObj: todo = { todoName, status: false };
-    setTodoList([...todoList, todoObj]);
-    setTodoName("");
+    const todoObj: todo = {
+      id: Math.random() * (10 - 1) + 1,
+      todoName,
+      status: false,
+    };
+    ADDTODO(todoObj);
   };
 
   return (
