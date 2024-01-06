@@ -17,7 +17,7 @@ const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {
   };
 
   return (
-    <div className="w-[400px] mx-auto">
+    <div className="w-[370px] md:w-[570px] mx-auto">
       <Header />
       <InputTodo setTodoList={setTodoList} todoList={todoList} />
       <TodoList todoList={todoList} deleteTodo={deleteTodo} />

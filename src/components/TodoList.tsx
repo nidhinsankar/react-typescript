@@ -2,6 +2,7 @@ import React from "react";
 import Todo from "./Todo";
 import { todo } from "../App";
 import { useTodoContext } from "../context/todoContext";
+import Footer from "./Footer";
 
 interface todoListProps {
   todoList: todo[];
@@ -14,10 +15,11 @@ const TodoList: React.FC<todoListProps> = ({ todoList, deleteTodo }) => {
   console.log(state);
 
   return (
-    <div className="bg-light-neutral-very-light-gray h-[350px] shadow-md rounded-md">
+    <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
       {state?.map((todo) => (
         <Todo {...todo} deleteTodo={deleteTodo} key={todo?.id} />
       ))}
+      <Footer />
     </div>
   );
 };

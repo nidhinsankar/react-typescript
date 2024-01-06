@@ -15,21 +15,24 @@ const InputTodo: React.FC<HomeProps> = ({ setTodoList, todoList }) => {
       status: false,
     };
     ADDTODO(todoObj);
+    setTodoName("");
   };
 
   return (
-    <div>
-      <div className="flex flex-col w-full">
-        <input
-          className="border"
-          type="text"
-          name="todo-name"
-          id="todo-name"
-          onChange={(e) => setTodoName(e.target.value)}
-          value={todoName}
-        />
-        <button onClick={onSubmit}>add todo</button>
-      </div>
+    <div className="flex items-center  w-full relative mt-5 mb-5 ">
+      <input
+        className="pl-14 w-full h-14 font-semibold  rounded-lg shadow-lg"
+        placeholder="Create a new todo..."
+        type="text"
+        name="todo-name"
+        id="todo-name"
+        onChange={(e) => setTodoName(e.target.value)}
+        value={todoName}
+      />
+      <button
+        className="w-6 h-6  border rounded-full absolute  mx-4"
+        onClick={onSubmit}
+      ></button>
     </div>
   );
 };

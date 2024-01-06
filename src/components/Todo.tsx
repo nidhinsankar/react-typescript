@@ -8,11 +8,11 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
   const { DELETETODO, TOGGLESTATUS } = useTodoContext();
 
   return (
-    <div className="flex items-center justify-between  border-b h-11 px-4">
+    <div className="flex items-center justify-between  border-b border-light-neutral-dark-grayish-blue h-14 px-4">
       <div className="flex items-center">
         <div
           onClick={() => TOGGLESTATUS(id)}
-          className="w-6 h-6 rounded-full border-2 flex justify-center items-center"
+          className="w-6 h-6 rounded-full border flex justify-center items-center"
         >
           {status && (
             <img
