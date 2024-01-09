@@ -1,27 +1,47 @@
 import React from "react";
 import Todo from "./Todo";
-import { todo } from "../App";
 import { useTodoContext } from "../context/todoContext";
 import Footer from "./Footer";
 
-interface todoListProps {
-  todoList: todo[];
-  deleteTodo: (name: string) => void;
-}
+interface todoListProps {}
 
-const TodoList: React.FC<todoListProps> = ({ todoList, deleteTodo }) => {
-  const { state } = useTodoContext();
+const TodoList: React.FC<todoListProps> = () => {
+  const { todos, filterType } = useTodoContext();
 
-  console.log(state);
+  if (filterType === "all") {
+    return (
+      <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
+        {todos?.map((todo) => (
+          <Todo {...todo} key={todo?.id} />
+        ))}
+        <Footer count={todos?.length} />
+      </div>
+    );
+  }
 
-  return (
-    <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
-      {state?.map((todo) => (
-        <Todo {...todo} deleteTodo={deleteTodo} key={todo?.id} />
-      ))}
-      <Footer />
-    </div>
-  );
+  if (filterType === "active") {
+    const todoList = todos?.filter((todo) => !todo?.status);
+    return (
+      <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
+        {todoList?.map((todo) => {
+          return <Todo {...todo} key={todo?.id} />;
+        })}
+        <Footer count={todoList?.length} />
+      </div>
+    );
+  }
+
+  if (filterType === "completed") {
+    const todoList = todos?.filter((todo) => todo?.status);
+    return (
+      <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
+        {todoList.map((todo) => {
+          return <Todo {...todo} key={todo?.id} />;
+        })}
+        <Footer count={todoList.length} />
+      </div>
+    );
+  }
 };
 
 export default TodoList;

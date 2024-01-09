@@ -1,22 +1,38 @@
-import { ADD_TODO, DELETE_TODO, TOGGLE_STATUS, todoType } from "../constants";
+import {
+  ADD_TODO,
+  DELETE_TODO,
+  TOGGLE_FILTER,
+  TOGGLE_STATUS,
+  todoType,
+} from "../constants";
 
 export const todoReducer = (state, action) => {
   switch (action.type) {
     case ADD_TODO:
-      return [...state, action.payload];
+      return { ...state, todos: [...state.todos, action.payload] };
 
     case DELETE_TODO:
-      return [
-        ...state?.filter((todo: todoType) => todo?.id !== action.payload),
-      ];
+      return {
+        ...state,
+        todos: state?.todos?.filter(
+          (todo: todoType) => todo?.id !== action.payload
+        ),
+      };
     case TOGGLE_STATUS:
-      return [
-        ...state.map((todo: todoType) =>
+      return {
+        ...state,
+        todos: state?.todos?.map((todo: todoType) =>
           todo?.id === action.payload
             ? { ...todo, status: !todo?.status }
             : todo
         ),
-      ];
+      };
+
+    case TOGGLE_FILTER:
+      return {
+        ...state,
+        filterType: action.payload,
+      };
     default:
       return state;
   }

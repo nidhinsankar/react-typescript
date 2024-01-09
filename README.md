@@ -9,6 +9,8 @@
 - started learning about using useContext and useReducer in react typescript
 - implemented context and reducer in todo app with typescript
 - implemented dispatch , action types, provider parent components in typescript
+- implemented filter tab in the with functionality
+- dispatch action types for filter functionality in the app
 
 ```
   // TODO APP PLANNING

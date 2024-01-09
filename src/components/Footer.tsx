@@ -1,14 +1,16 @@
-import { useTodoContext } from "../context/todoContext";
+import React from "react";
+import FilterTab from "./FilterTab";
 
-const Footer = () => {
-  const { state } = useTodoContext();
+type footerProps = {
+  count: number;
+};
+
+const Footer: React.FC<footerProps> = ({ count }) => {
   return (
     <div className="flex items-center justify-between text-sm px-4 h-14">
-      <p>{state?.length} items left</p>
+      <p>{count} items left</p>
       <ul className="flex items-center justify-between">
-        <li>All</li>
-        <li className="px-2">Active</li>
-        <li>Completed</li>
+        <FilterTab />
       </ul>
       <button>Clear Completed</button>
     </div>

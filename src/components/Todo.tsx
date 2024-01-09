@@ -12,17 +12,25 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
       <div className="flex items-center">
         <div
           onClick={() => TOGGLESTATUS(id)}
-          className="w-6 h-6 rounded-full border flex justify-center items-center"
+          className="w-6 h-6 rounded-full border flex justify-center items-center cursor-pointer"
         >
           {status && (
             <img
               src={checkIcon}
-              className="w-full h-full rounded-full p-1  bg-gradient-check "
+              className="w-full h-full rounded-full p-1 bg-gradient-check"
               alt="check-icon"
             />
           )}
         </div>
-        <h2 className="ml-4">{todoName}</h2>
+        <h2
+          className={
+            status
+              ? "line-through ml-4 text-light-neutral-light-grayish-blue"
+              : "ml-4"
+          }
+        >
+          {todoName}
+        </h2>
       </div>
       <div>
         <img

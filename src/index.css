@@ -6,10 +6,15 @@
 
 @layer base {
   body {
-    @apply font-Josefin-sans text-lg;
+    @apply font-Josefin-sans text-lg text-light-neutral-very-dark-grayish-blue;
+  }
+  .bg-gradient-check {
+    background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   }
 }
 
-.bg-gradient-check {
-  background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+@layer components {
+  .filter-btn {
+    @apply text-light-neutral-dark-grayish-blue font-semibold cursor-pointer hover:text-light-neutral-light-grayish-blue;
+  }
 }
