@@ -11,6 +11,7 @@
 - implemented dispatch , action types, provider parent components in typescript
 - implemented filter tab in the with functionality
 - dispatch action types for filter functionality in the app
+- learning about implementing dark mode using tailwind
 
 ```
   // TODO APP PLANNING

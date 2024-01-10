@@ -1,9 +1,8 @@
-import React, { SetStateAction } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import InputTodo from "../components/InputTodo";
 import TodoList from "../components/TodoList";
 import { todo } from "../App";
 import Header from "../components/Header";
-import { filterCompleted } from "../constants";
 export interface HomeProps {
   todoList: todo[];
   setTodoList: React.Dispatch<SetStateAction<todo[]>>;
@@ -12,11 +11,33 @@ export interface HomeProps {
 const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {
   console.log(todoList);
 
+  const [theme, setTheme] = useState<null | string>(null);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)".matches)) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, []);
+
+  const handleThemeSwitch = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("light");
+    }
+  }, [theme]);
+
   return (
-    <div className="w-[370px] md:w-[570px] mx-auto">
+    <div className="w-[370px] md:w-[570px] mx-auto ">
       <Header />
       <InputTodo setTodoList={setTodoList} todoList={todoList} />
-      <TodoList filter={filterCompleted} />
+      <TodoList />
     </div>
   );
 };
