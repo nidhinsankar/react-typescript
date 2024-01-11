@@ -11,30 +11,8 @@ export interface HomeProps {
 const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {
   console.log(todoList);
 
-  const [theme, setTheme] = useState<null | string>(null);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-color-scheme: dark)".matches)) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  }, []);
-
-  const handleThemeSwitch = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("light");
-    }
-  }, [theme]);
-
   return (
-    <div className="w-[370px] md:w-[570px] mx-auto ">
+    <div className="w-[370px] md:w-[570px] mx-auto">
       <Header />
       <InputTodo setTodoList={setTodoList} todoList={todoList} />
       <TodoList />

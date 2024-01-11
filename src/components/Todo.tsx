@@ -8,11 +8,11 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
   const { DELETETODO, TOGGLESTATUS } = useTodoContext();
 
   return (
-    <div className="flex items-center justify-between  border-b border-light-neutral-dark-grayish-blue h-14 px-4">
+    <div className="flex items-center justify-between  border-b border-dark-neutral-very-dark-grayish-blue-1 h-14 px-4">
       <div className="flex items-center">
         <div
           onClick={() => TOGGLESTATUS(id)}
-          className="w-6 h-6 rounded-full border flex justify-center items-center cursor-pointer"
+          className="w-6 h-6 rounded-full border border-dark-neutral-very-dark-grayish-blue-1 flex justify-center items-center cursor-pointer"
         >
           {status && (
             <img
@@ -25,7 +25,7 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
         <h2
           className={
             status
-              ? "line-through ml-4 text-light-neutral-light-grayish-blue"
+              ? "line-through ml-4 text-dark-neutral-very-dark-grayish-blue-1"
               : "ml-4"
           }
         >
@@ -37,7 +37,7 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
           onClick={() => DELETETODO(id)}
           src={crossIcon}
           alt="cross-icon"
-          className="h-4"
+          className="h-4 text-dark-neutral-dark-grayish-blue"
         />
       </div>
     </div>

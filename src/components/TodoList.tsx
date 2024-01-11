@@ -10,7 +10,7 @@ const TodoList: React.FC<todoListProps> = () => {
 
   if (filterType === "all") {
     return (
-      <div className="bg-light-neutral-very-light-gray  shadow-lg rounded-md">
+      <div className=" bg-dark-neutral-very-dark-desat-blue  shadow-lg rounded-md">
         {todos?.map((todo) => (
           <Todo {...todo} key={todo?.id} />
         ))}

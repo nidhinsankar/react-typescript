@@ -15,10 +15,14 @@ import {
   Toggle_Status,
 } from "./action-type";
 
-export type initialStateType = {
+export interface initialStateType {
   todos: todoType[];
   filterType: string;
-};
+  ADDTODO?: (data: todoType) => void;
+  DELETETODO?: (id: number) => void;
+  TOGGLESTATUS?: (id: number) => void;
+  TOGGLEFILTER?: (filter: string) => void;
+}
 
 type todoProviderProps = {
   children: React.ReactNode;
