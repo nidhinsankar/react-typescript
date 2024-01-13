@@ -1,17 +1,22 @@
-import { filterOptions } from "../constants";
+import { TOGGLE_FILTER, filterOptions } from "../constants";
 import { useTodoContext } from "../context/todoContext";
 
 const FilterTab = () => {
-  const { TOGGLEFILTER, filterType } = useTodoContext();
+  const { dispatch, state } = useTodoContext();
+
+  const toggleFilterDispatch = (name: string) => {
+    dispatch({ type: TOGGLE_FILTER, payload: name });
+  };
+
   return filterOptions.map((filter) => (
     <li
       key={filter.value}
       className={
-        filterType === filter.value
+        state?.filterType === filter.value
           ? "filter-btn px-2 text-primary-bright-blue"
           : "filter-btn px-2"
       }
-      onClick={() => TOGGLEFILTER(filter.value)}
+      onClick={() => toggleFilterDispatch(filter.value)}
     >
       {filter.label}
     </li>

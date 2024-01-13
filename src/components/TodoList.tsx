@@ -6,7 +6,10 @@ import Footer from "./Footer";
 interface todoListProps {}
 
 const TodoList: React.FC<todoListProps> = () => {
-  const { todos, filterType } = useTodoContext();
+  const { state } = useTodoContext();
+  const { todos, filterType } = state;
+
+  console.log(state);
 
   if (filterType === "all") {
     return (

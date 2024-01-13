@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { todo } from "../App";
 import { HomeProps } from "../pages/Home";
 import { useTodoContext } from "../context/todoContext";
+import { ADD_TODO, todoType } from "../constants";
 
-const InputTodo: React.FC<HomeProps> = ({ setTodoList, todoList }) => {
+const InputTodo: React.FC<HomeProps> = () => {
   const [todoName, setTodoName] = useState("");
 
-  const { ADDTODO } = useTodoContext();
+  const { dispatch } = useTodoContext();
 
   const onSubmit = () => {
-    const todoObj: todo = {
+    const todoObj: todoType = {
       id: Math.random() * (10 - 1) + 1,
       todoName,
       status: false,
     };
-    ADDTODO(todoObj);
+    dispatch({ type: ADD_TODO, payload: todoObj });
     setTodoName("");
   };
 

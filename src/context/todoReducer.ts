@@ -5,8 +5,9 @@ import {
   TOGGLE_STATUS,
   todoType,
 } from "../constants";
+import { Action, State } from "./todoContext";
 
-export const todoReducer = (state, action) => {
+export const todoReducer = (state: State, action: Action) => {
   switch (action.type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, action.payload] };
@@ -14,9 +15,7 @@ export const todoReducer = (state, action) => {
     case DELETE_TODO:
       return {
         ...state,
-        todos: state?.todos?.filter(
-          (todo: todoType) => todo?.id !== action.payload
-        ),
+        todos: state?.todos?.filter((todo) => todo?.id !== action.payload),
       };
     case TOGGLE_STATUS:
       return {

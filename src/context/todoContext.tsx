@@ -1,19 +1,21 @@
 import React, { createContext, useContext, useReducer } from "react";
-import {
-  ADD_TODO,
-  DELETE_TODO,
-  TOGGLE_FILTER,
-  TOGGLE_STATUS,
-  filterAll,
-  todoType,
-} from "../constants";
+import { filterAll, todoType } from "../constants";
 import { todoReducer } from "./todoReducer";
-import {
-  Add_Todo,
-  Delete_Todo,
-  Toggle_Filter,
-  Toggle_Status,
-} from "./action-type";
+
+export interface State {
+  todos: todoType[];
+  filterType: string;
+}
+
+export type Action =
+  | { type: string; payload: todoType }
+  | { type: string; payload: number }
+  | { type: string; payload: string };
+
+export interface ContextProps {
+  state: State;
+  dispatch: React.Dispatch<Action>;
+}
 
 export interface initialStateType {
   todos: todoType[];
@@ -28,7 +30,7 @@ type todoProviderProps = {
   children: React.ReactNode;
 };
 
-const initialState: initialStateType = {
+const initialState: State = {
   todos: [
     {
       id: 1,
@@ -49,38 +51,19 @@ const initialState: initialStateType = {
   filterType: filterAll,
 };
 
-const todoContext = createContext<initialStateType>(initialState);
+const todoContext = createContext<ContextProps>({
+  state: initialState,
+  dispatch: () => {},
+});
 
 export const TodoProvider: React.FC<todoProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
 
-  const AddTodoDispatch = (data: todoType) => {
-    dispatch(Add_Todo({ action_type: ADD_TODO, action_payload: data }));
-  };
-
-  const DeleteTodoDispatch = (id: number) => {
-    dispatch(Delete_Todo({ action_type: DELETE_TODO, action_payload: id }));
-  };
-
-  const ToggleStatusDispatch = (id: number) => {
-    dispatch(Toggle_Status({ action_type: TOGGLE_STATUS, action_payload: id }));
-  };
-
-  const ToggleFilterDispatch = (filter: string) => {
-    dispatch(
-      Toggle_Filter({ action_type: TOGGLE_FILTER, action_payload: filter })
-    );
-  };
-
   return (
     <todoContext.Provider
       value={{
-        todos: state.todos,
-        filterType: state.filterType,
-        ADDTODO: AddTodoDispatch,
-        DELETETODO: DeleteTodoDispatch,
-        TOGGLESTATUS: ToggleStatusDispatch,
-        TOGGLEFILTER: ToggleFilterDispatch,
+        state,
+        dispatch,
       }}
     >
       {children}
