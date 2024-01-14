@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import desktopBG from "./assets/images/bg-desktop-light.jpg";
-export interface todo {
-  id: number;
-  todoName: string;
-  status: boolean;
-}
+import { Todo } from "./types";
 
 function App() {
-  const [todoList, setTodoList] = useState<todo[]>([]);
+  const [todoList, setTodoList] = useState<Todo[]>([]);
   return (
     <div>
       <img

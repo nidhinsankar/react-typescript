@@ -5,7 +5,7 @@ import {
   TOGGLE_STATUS,
   todoType,
 } from "../constants";
-import { Action, State } from "./todoContext";
+import { Action, State } from "../types";
 
 export const todoReducer = (state: State, action: Action) => {
   switch (action.type) {

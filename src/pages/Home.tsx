@@ -1,11 +1,11 @@
-import React, { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction } from "react";
 import InputTodo from "../components/InputTodo";
 import TodoList from "../components/TodoList";
-import { todo } from "../App";
 import Header from "../components/Header";
+import { Todo } from "../types";
 export interface HomeProps {
-  todoList: todo[];
-  setTodoList: React.Dispatch<SetStateAction<todo[]>>;
+  todoList: Todo[];
+  setTodoList: React.Dispatch<SetStateAction<Todo[]>>;
 }
 
 const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {

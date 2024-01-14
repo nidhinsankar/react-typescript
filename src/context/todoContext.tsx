@@ -1,30 +1,7 @@
 import React, { createContext, useContext, useReducer } from "react";
-import { filterAll, todoType } from "../constants";
+import { filterAll } from "../constants";
 import { todoReducer } from "./todoReducer";
-
-export interface State {
-  todos: todoType[];
-  filterType: string;
-}
-
-export type Action =
-  | { type: string; payload: todoType }
-  | { type: string; payload: number }
-  | { type: string; payload: string };
-
-export interface ContextProps {
-  state: State;
-  dispatch: React.Dispatch<Action>;
-}
-
-export interface initialStateType {
-  todos: todoType[];
-  filterType: string;
-  ADDTODO?: (data: todoType) => void;
-  DELETETODO?: (id: number) => void;
-  TOGGLESTATUS?: (id: number) => void;
-  TOGGLEFILTER?: (filter: string) => void;
-}
+import { ContextProps, State } from "../types";
 
 type todoProviderProps = {
   children: React.ReactNode;
