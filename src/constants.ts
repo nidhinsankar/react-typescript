@@ -3,12 +3,6 @@ export const DELETE_TODO = "DELETE_TODO";
 export const TOGGLE_STATUS = "TOGGLE_STATUS";
 export const TOGGLE_FILTER = "TOGGLE_FILTER";
 
-export interface todoType {
-  id: number;
-  todoName: string;
-  status: false;
-}
-
 export const filterAll = "all";
 export const filterActive = "active";
 export const filterCompleted = "completed";

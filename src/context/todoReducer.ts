@@ -3,9 +3,8 @@ import {
   DELETE_TODO,
   TOGGLE_FILTER,
   TOGGLE_STATUS,
-  todoType,
 } from "../constants";
-import { Action, State } from "../types";
+import { Action, State, TodoType } from "../types";
 
 export const todoReducer = (state: State, action: Action) => {
   switch (action.type) {
@@ -20,7 +19,7 @@ export const todoReducer = (state: State, action: Action) => {
     case TOGGLE_STATUS:
       return {
         ...state,
-        todos: state?.todos?.map((todo: todoType) =>
+        todos: state?.todos?.map((todo: TodoType) =>
           todo?.id === action.payload
             ? { ...todo, status: !todo?.status }
             : todo

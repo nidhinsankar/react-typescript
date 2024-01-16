@@ -1,11 +1,11 @@
 import React from "react";
-import { todo } from "../App";
+import { TodoType } from "../types";
 import checkIcon from "../assets/images/icon-check.svg";
 import crossIcon from "../assets/images/icon-cross.svg";
 import { useTodoContext } from "../context/todoContext";
 import { DELETE_TODO, TOGGLE_STATUS } from "../constants";
 
-const Todo: React.FC<todo> = ({ id, todoName, status }) => {
+const Todo: React.FC<TodoType> = ({ id, todoName, status }) => {
   const { dispatch } = useTodoContext();
 
   const toggleStatusDispatch = (id: number) => {
@@ -40,7 +40,7 @@ const Todo: React.FC<todo> = ({ id, todoName, status }) => {
           onClick={() => deleteTodoDispatch(id)}
           src={crossIcon}
           alt="cross-icon"
-          className="h-4 text-border-todo"
+          className="h-4 text-border-todo cursor-pointer"
         />
       </div>
     </div>

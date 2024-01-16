@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { HomeProps } from "../pages/Home";
 import { useTodoContext } from "../context/todoContext";
-import { ADD_TODO, todoType } from "../constants";
+import { ADD_TODO } from "../constants";
+import { TodoType } from "../types";
 
 const InputTodo: React.FC<HomeProps> = () => {
   const [todoName, setTodoName] = useState("");
@@ -9,7 +10,7 @@ const InputTodo: React.FC<HomeProps> = () => {
   const { dispatch } = useTodoContext();
 
   const onSubmit = () => {
-    const todoObj: todoType = {
+    const todoObj: TodoType = {
       id: Math.random() * (10 - 1) + 1,
       todoName,
       status: false,

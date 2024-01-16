@@ -1,8 +1,8 @@
-import { todoType } from "../constants";
+import { TodoType } from "../types";
 
 export interface ActionObj {
   type: string;
-  payload: todoType | number | string;
+  payload: TodoType | number | string;
 }
 
 export const Add_Todo = (actionObj: ActionObj) => ({
