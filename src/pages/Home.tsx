@@ -9,8 +9,6 @@ export interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ todoList, setTodoList }) => {
-  console.log(todoList);
-
   return (
     <div className="w-[370px] md:w-[570px] mx-auto">
       <Header />

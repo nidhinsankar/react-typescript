@@ -9,8 +9,6 @@ const TodoList: React.FC<todoListProps> = () => {
   const { state } = useTodoContext();
   const { todos, filterType } = state;
 
-  console.log(state);
-
   if (filterType === "all") {
     return (
       <div className=" bg-background-todo  shadow-lg rounded-md">
