@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import moonIcon from "../assets/images/icon-moon.svg";
 import sunIcon from "../assets/images/icon-sun.svg";
 import { useThemeContext } from "../context/ThemeContext";
 
 const Header = ({}) => {
-  // const [theme, setTheme] = useState<null | string>(null);
   const { state, dispatch } = useThemeContext();
 
   useEffect(() => {
