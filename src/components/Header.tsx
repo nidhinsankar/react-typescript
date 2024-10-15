@@ -32,7 +32,7 @@ const Header = ({}) => {
         src={state.theme === "dark" ? sunIcon : moonIcon}
         onClick={() => handleThemeSwitch()}
         alt="toggle-icon"
-        className="cursor-pointer"
+        className="cursor-pointer transition-all"
       />
     </header>
   );
